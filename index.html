@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dogeared Books</title>
+<meta name="description" content="A small shelf of family books, warm stories worth curling up with.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">a small shelf of family books</p>
+    <h1>Dog<em>eared</em> Books</h1>
+    <p class="tagline">Stories worth curling up with, added to the shelf one dog-eared page at a time.</p>
+  </div>
+</header>
+
+<nav class="shelf-nav">
+  <div class="wrap">
+    <span class="shelf-label">Browse the shelf:</span>
+    <div id="shelf-tabs"></div>
+  </div>
+</nav>
+
+<section id="books">
+  <div class="wrap">
+    <div class="book-grid" id="book-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="status-line">
+    <div>
+      <a href="mailto:support@dogearedbooks.net">support@dogearedbooks.net</a>
+      <span class="sep">·</span>
+      <a href="mailto:admin@dogearedbooks.net">admin@dogearedbooks.net</a>
+    </div>
+    <div><span class="stamp">est. 2026</span></div>
+  </div>
+</footer>
+
+<script src="data/books.js"></script>
+<script>
+  const grid = document.getElementById('book-grid');
+  const tabs = document.getElementById('shelf-tabs');
+  const categories = ['All', ...new Set(BOOKS.map(b => b.category))];
+  let active = 'All';
+
+  function renderTabs() {
+    tabs.innerHTML = '';
+    categories.forEach((cat) => {
+      const btn = document.createElement('button');
+      btn.className = 'shelf-tab' + (cat === active ? ' active' : '');
+      btn.type = 'button';
+      btn.textContent = cat;
+      btn.addEventListener('click', () => {
+        active = cat;
+        renderTabs();
+        renderGrid();
+      });
+      tabs.appendChild(btn);
+    });
+  }
+
+  function renderGrid() {
+    grid.innerHTML = '';
+    const shown = BOOKS.filter(b => active === 'All' || b.category === active);
+    if (!shown.length) {
+      grid.innerHTML = '<p class="empty-shelf">Nothing on this shelf yet, check back soon.</p>';
+      return;
+    }
+    shown.forEach((book) => {
+      const card = document.createElement('div');
+      card.className = 'book-card';
+      card.innerHTML = `
+        <div class="cover-wrap">
+          <img class="cover" src="${book.cover}" alt="${book.title} cover">
+          <span class="shelfmark">${book.category}</span>
+          <span class="dogear" aria-hidden="true"></span>
+        </div>
+        <div class="body">
+          <h2>${book.title}</h2>
+          <p class="summary">${book.summary}</p>
+          <p class="category-tag">${book.category}</p>
+          <div class="meta">
+            <span class="price">${book.price}</span>
+            <div class="formats">${book.formats.map(f => `<span>${f}</span>`).join('')}</div>
+          </div>
+          <a class="btn" href="${book.buyUrl}" target="_blank" rel="noopener">Take it home &rarr;</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  renderTabs();
+  renderGrid();
+</script>
+
+</body>
+</html>

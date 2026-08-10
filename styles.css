@@ -1,0 +1,347 @@
+/* Dogeared Books — a small family reading-room, not the mainframe brand.
+   Warm reading-lamp wood tones with a parchment card catalog underneath. */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --cocoa: #2b1a10;
+  --cocoa-2: #3a2617;
+  --cocoa-3: #4a3220;
+  --parchment: #f2e4c8;
+  --parchment-2: #e6d2a4;
+  --parchment-3: #d8bd85;
+  --leather: #7c332c;
+  --leather-2: #963f34;
+  --brass: #c4923e;
+  --brass-bright: #ddb166;
+  --sage: #5c6b47;
+  --ink: #2a1a10;
+  --ink-soft: #4a3320;
+
+  --bg: var(--cocoa);
+  --bg-panel: var(--cocoa-2);
+  --bg-panel-2: var(--cocoa-3);
+  --border: #5a4128;
+  --text: var(--parchment);
+  --text-dim: #c9ad82;
+  --accent: var(--brass);
+  --accent-bright: var(--brass-bright);
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Lora', Georgia, serif;
+  --font-stamp: 'Courier Prime', 'SF Mono', Menlo, monospace;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 20% -10%, rgba(196, 146, 62, 0.10), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(124, 51, 44, 0.14), transparent 55%);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-bright); }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- header / reading lamp hero ---------- */
+.hero {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+}
+.hero::before {
+  /* a soft lamp-glow above the title */
+  content: '';
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+  height: 320px;
+  background: radial-gradient(ellipse at center, rgba(221, 177, 102, 0.25), transparent 70%);
+  pointer-events: none;
+}
+.hero .wrap { position: relative; }
+
+.eyebrow {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin: 0 0 1.4rem;
+}
+.eyebrow::before { content: '\201C '; color: var(--accent); }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 0.9rem;
+  color: var(--parchment);
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent-bright);
+}
+
+.hero .tagline {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  max-width: 46ch;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* ---------- shelf / category nav ---------- */
+.shelf-nav {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-panel);
+}
+.shelf-nav .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+.shelf-label {
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-right: 0.4rem;
+}
+.shelf-tab {
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  background: var(--bg-panel-2);
+  border: 1px solid var(--border);
+  padding: 0.5em 0.9em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.shelf-tab:hover { color: var(--parchment); border-color: var(--accent); }
+.shelf-tab.active {
+  color: var(--ink);
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+/* ---------- book grid ---------- */
+section#books { padding: 3.5rem 0 5rem; }
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+@media (max-width: 720px) {
+  .book-grid { grid-template-columns: 1fr; }
+}
+
+.book-card {
+  background: var(--parchment);
+  color: var(--ink);
+  border: 1px solid var(--parchment-3);
+  box-shadow: 0 10px 24px rgba(15, 8, 3, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.cover-wrap {
+  position: relative;
+  background: var(--parchment-2);
+  border-bottom: 1px solid var(--parchment-3);
+  overflow: hidden;
+}
+.cover-wrap .cover {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
+  display: block;
+}
+
+/* signature: a literal dog-eared corner. Lifts on hover/focus to
+   peek at the shelf mark (category) tucked underneath it. */
+.shelfmark {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  max-width: 8rem;
+  font-family: var(--font-stamp);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--ink-soft);
+  background: var(--parchment);
+  border: 1px solid var(--parchment-3);
+  padding: 0.3em 0.5em;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 1;
+}
+.dogear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3.4rem;
+  height: 3.4rem;
+  z-index: 2;
+  background: linear-gradient(135deg, var(--parchment) 45%, var(--parchment-3) 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  box-shadow: -4px 4px 8px rgba(15, 8, 3, 0.35);
+  transform-origin: top right;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.book-card:hover .dogear,
+.book-card:focus-within .dogear {
+  transform: rotate(-22deg) translate(-2px, 2px);
+}
+.book-card:hover .shelfmark,
+.book-card:focus-within .shelfmark {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.book-card .body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  flex-grow: 1;
+}
+
+.book-card h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--ink);
+}
+
+.book-card .summary {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  flex-grow: 1;
+}
+
+.book-card .category-tag {
+  align-self: flex-start;
+  font-family: var(--font-stamp);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--leather);
+  border: 1px solid var(--leather);
+  padding: 0.25em 0.6em;
+  margin: 0;
+}
+
+.book-card .meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  border-top: 1px dashed var(--parchment-3);
+  padding-top: 0.85rem;
+}
+
+.book-card .price {
+  font-family: var(--font-stamp);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--leather);
+}
+
+.book-card .formats {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.book-card .formats span {
+  font-family: var(--font-stamp);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--parchment-3);
+  padding: 0.2em 0.55em;
+  color: var(--ink-soft);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: var(--font-stamp);
+  font-size: 0.88rem;
+  text-decoration: none;
+  color: var(--parchment);
+  background: var(--leather);
+  padding: 0.75em 1.2em;
+  border: 1px solid var(--leather);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn:hover { background: var(--leather-2); }
+.book-card .btn { margin-top: 0.2rem; }
+
+.empty-shelf {
+  font-family: var(--font-stamp);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  padding: 2rem 0;
+}
+
+/* ---------- footer ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-panel);
+  font-family: var(--font-stamp);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.status-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1.2rem 1.5rem;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.status-line a { color: var(--text-dim); }
+.status-line a:hover { color: var(--accent-bright); }
+.status-line .sep { opacity: 0.4; margin: 0 0.5em; }
+.status-line .stamp { color: var(--accent); }
