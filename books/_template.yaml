@@ -1,7 +1,7 @@
 title: "Book Title Here"
 summary: "A couple of warm, plain sentences about the book, what it's about and who it's for."
 price: "$5.99"
-category: "Family & Identity"
+tags: [Family, Identity]
 formats: [EPUB]
 buy_url: "https://britley.gumroad.com/l/REPLACE-ME"
 cover: "cover-file-name.jpg"

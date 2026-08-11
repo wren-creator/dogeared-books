@@ -8,7 +8,8 @@ Britley's personal/family book line needed its own home, separate from the mainf
 
 - Same mechanics as the mainframe `books` repo: standalone static site, GitHub Pages, GoDaddy CNAME, Gumroad for checkout. Proven pattern, no reason to reinvent it for a second brand.
 - Visually distinct from the mainframe catalog on purpose: warm "old library" theme (wood, parchment, brass, a literal dog-eared page corner on each cover) instead of the terminal/CRT look, matched to a family-book audience instead of a technical one.
-- Categories are a first-class field on each book (not bolted on later), the shelf-filter bar at the top of the page auto-generates from whatever categories exist in `data/books.js`.
+- Tags are a first-class field on each book (not bolted on later), stored as an array so one book can carry more than one tag. The shelf-filter bar at the top of the page auto-generates from whatever tags exist in `data/books.js`; a tag with no book yet just doesn't show up until one uses it.
+- 2026-08-11: split the original "Family & Identity" category into two separate tags (`Family`, `Identity`), both kept on the existing title, and reserved `Adventure` as a tag name for a future title in that vein.
 - Two contact addresses: `support@dogearedbooks.net` for reader questions, `admin@dogearedbooks.net` for everything else.
 
 ## Next actions
