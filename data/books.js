@@ -14,7 +14,7 @@ const BOOKS = [
     price: "$5.99",
     tags: ["Family", "Identity"],
     formats: ["EPUB"],
-    buyUrl: "https://britley.gumroad.com/l/REPLACE-ME",
+    buyUrl: "https://britley.gumroad.com/l/stillmymom",
     cover: "assets/books/still-my-mom-too.png",
   },
 ];
