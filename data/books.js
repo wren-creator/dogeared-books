@@ -11,7 +11,7 @@ const BOOKS = [
   {
     title: "Still My Mom Too",
     summary: "A year after his dad became his Mom 2, Timmy notices the kitchen going quiet, a friend who isn't allowed over anymore, and grown-ups who whisper when he walks in. A gentle story for ages 8 to 10, written to be read with a grown-up, about what to do when the world gets unkind and your family doesn't.",
-    price: "$5.99",
+    price: "$4.99",
     tags: ["Family", "Identity"],
     formats: ["EPUB"],
     buyUrl: "https://britley.gumroad.com/l/stillmymom",

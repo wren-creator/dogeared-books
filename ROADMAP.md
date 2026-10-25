@@ -22,5 +22,5 @@ Britley's personal/family book line needed its own home, separate from the mainf
 
 ## Later / not yet scoped
 
-- [x] Second title added 2026-10-25: *Still My Mom Too* (Book 2 of Timmy's story, ages 8 to 10, $5.99 placeholder). Gumroad link is live: `https://britley.gumroad.com/l/stillmymom`. The full Gumroad listing text lives in `books/still-my-mom-too.gumroad.md`
+- [x] Second title added 2026-10-25: *Still My Mom Too* (Book 2 of Timmy's story, ages 8 to 10, $4.99). Gumroad link is live: `https://britley.gumroad.com/l/stillmymom`. The full Gumroad listing text lives in `books/still-my-mom-too.gumroad.md`
 - Bundle offer for the two Timmy books, now that there is more than one
